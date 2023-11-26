@@ -14,6 +14,8 @@
 		061F13212B0FBD97003F2287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 061F13202B0FBD97003F2287 /* Assets.xcassets */; };
 		061F13242B0FBD97003F2287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 061F13222B0FBD97003F2287 /* LaunchScreen.storyboard */; };
 		061F132E2B0FD045003F2287 /* FilledButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F132D2B0FD045003F2287 /* FilledButtonFactory.swift */; };
+		727934662B10EBDD006B1BEB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727934652B10EBDD006B1BEB /* StorageManager.swift */; };
+		727934682B12E552006B1BEB /* AlertControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727934672B12E552006B1BEB /* AlertControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		061F13232B0FBD97003F2287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		061F13252B0FBD97003F2287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061F132D2B0FD045003F2287 /* FilledButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonFactory.swift; sourceTree = "<group>"; };
+		727934652B10EBDD006B1BEB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		727934672B12E552006B1BEB /* AlertControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,58 @@
 		061F13132B0FBD94003F2287 /* TaskListApp */ = {
 			isa = PBXGroup;
 			children = (
-				061F13142B0FBD94003F2287 /* AppDelegate.swift */,
-				061F13162B0FBD94003F2287 /* SceneDelegate.swift */,
-				061F13182B0FBD94003F2287 /* TaskListViewController.swift */,
-				061F132D2B0FD045003F2287 /* FilledButtonFactory.swift */,
-				061F13202B0FBD97003F2287 /* Assets.xcassets */,
+				7279346A2B135A48006B1BEB /* Services */,
+				7279346C2B135A6A006B1BEB /* ViewControllers */,
+				7279346B2B135A5C006B1BEB /* Storage */,
+				727934692B12E563006B1BEB /* Factories */,
+				7279346D2B135B4F006B1BEB /* Suppoting files */,
 				061F13222B0FBD97003F2287 /* LaunchScreen.storyboard */,
-				061F13252B0FBD97003F2287 /* Info.plist */,
 				061F131D2B0FBD94003F2287 /* TaskListApp.xcdatamodeld */,
 			);
 			path = TaskListApp;
+			sourceTree = "<group>";
+		};
+		727934692B12E563006B1BEB /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				727934672B12E552006B1BEB /* AlertControllerFactory.swift */,
+				061F132D2B0FD045003F2287 /* FilledButtonFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		7279346A2B135A48006B1BEB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				061F13162B0FBD94003F2287 /* SceneDelegate.swift */,
+				061F13142B0FBD94003F2287 /* AppDelegate.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7279346B2B135A5C006B1BEB /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				727934652B10EBDD006B1BEB /* StorageManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		7279346C2B135A6A006B1BEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				061F13182B0FBD94003F2287 /* TaskListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7279346D2B135B4F006B1BEB /* Suppoting files */ = {
+			isa = PBXGroup;
+			children = (
+				061F13202B0FBD97003F2287 /* Assets.xcassets */,
+				061F13252B0FBD97003F2287 /* Info.plist */,
+			);
+			path = "Suppoting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +188,9 @@
 			files = (
 				061F131F2B0FBD94003F2287 /* TaskListApp.xcdatamodeld in Sources */,
 				061F13192B0FBD94003F2287 /* TaskListViewController.swift in Sources */,
+				727934682B12E552006B1BEB /* AlertControllerFactory.swift in Sources */,
 				061F132E2B0FD045003F2287 /* FilledButtonFactory.swift in Sources */,
+				727934662B10EBDD006B1BEB /* StorageManager.swift in Sources */,
 				061F13152B0FBD94003F2287 /* AppDelegate.swift in Sources */,
 				061F13172B0FBD94003F2287 /* SceneDelegate.swift in Sources */,
 			);
@@ -290,7 +338,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VQ5VJ2W2YB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TaskListApp/Info.plist;
+				INFOPLIST_FILE = "TaskListApp/Suppoting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -303,6 +351,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fun.swiftpractice.TaskListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VQ5VJ2W2YB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TaskListApp/Info.plist;
+				INFOPLIST_FILE = "TaskListApp/Suppoting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -331,6 +382,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fun.swiftpractice.TaskListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
