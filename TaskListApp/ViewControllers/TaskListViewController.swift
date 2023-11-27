@@ -59,8 +59,11 @@ private extension TaskListViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
 		let saveAction = UIAlertAction(title: "Save Task", style: .default) { [unowned self] _ in
-			guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-			saveTaskAt(task)
+			guard let text = alert.textFields?.first?.text, !text.isEmpty else { return }
+            storageManager.saveTask(text) { task in
+                self.taskList.insert(task, at: 0)
+            }
+            tableView.reloadData()
 		}
 		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
@@ -73,12 +76,12 @@ private extension TaskListViewController {
 	}
     
     
-    func showAlertForRefresh(with title: String, and message: String) {
+    func showAlertForRefresh(with title: String, and message: String, index: Int) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save change", style: .destructive) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-            refreshTask(task)
+            refreshTask(task, index: index)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
@@ -91,27 +94,15 @@ private extension TaskListViewController {
         present(alert, animated: true)
     }
     
-	
-	func saveTaskAt(_ taskName: String) {
-        let task = Task(context: storageManager.context)
-        task.title = taskName
-        taskList.append(task)
-        let indexPath = IndexPath(row: taskList.count - 1, section: 0)
-		tableView.insertRows(at: [indexPath], with: .automatic)
-        storageManager.saveContext()
-	}
     
-    func refreshTask(_ taskName: String) {
-        
-        let indexPath = IndexPath(row: taskList.count - 1, section: 0)
-        let task = taskList[indexPath.row]
+    func refreshTask(_ taskName: String, index: Int) {
+        let task = taskList[index]
+       // let task = storageManager.getfetchData()[index]
         task.title = taskName
     
-        taskList.remove(at: indexPath.row)
-        taskList.insert(task, at: indexPath.row)
-        //tableView.reloadRows(at: [indexPath], with: .automatic)
+        taskList.remove(at: index)
+        taskList.insert(task, at: index)
         storageManager.refreshContext(task)
-        
         tableView.reloadData()
     }
     
@@ -147,6 +138,10 @@ extension TaskListViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView,
                             leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -154,7 +149,8 @@ extension TaskListViewController {
             success(true)
         })
         editAction.backgroundColor = .blue
-        showAlertForRefresh(with: "Change task", and: "What do you want to do?")
+        showAlertForRefresh(with: "Change task", and: "What do you want to do?", index: indexPath.row)
+       
         
         tableView.reloadRows(at: [indexPath], with: .automatic)
         return UISwipeActionsConfiguration(actions: [editAction])

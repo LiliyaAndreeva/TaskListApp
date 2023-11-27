@@ -30,7 +30,12 @@ final class Storagemanager {
         context = persistentContainer.viewContext
     }
     
-    
+    func saveTask(_ taskName: String, completion: @escaping (Task) -> Void) {
+        let task = Task(context: context)
+        task.title = taskName
+        completion(task)
+        saveContext()
+    }
     
     func getfetchData() -> [Task]{
         var taskList: [Task] = []
@@ -41,7 +46,7 @@ final class Storagemanager {
         } catch {
             print(error)
         }
-        return taskList
+        return taskList.reversed()
     }
     
     func deleteContext (_ task: Task) {
